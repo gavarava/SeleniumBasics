@@ -2,36 +2,29 @@ package com.automation.tests;
 
 import static org.testng.Assert.assertEquals;
 
-import org.junit.Ignore;
 import org.testng.annotations.*;
 
-import com.automation.tests.support.demowebsite.PHPTravelsTestHelper;
+import com.automation.tests.pages.PHPTravelsHomePage;
 
-public class PHPTravelsHomePageTest {
+public class PHPTravelsHomePageTest extends TestBase {
 
-	PHPTravelsTestHelper testHelper;
+	private PHPTravelsHomePage homePage;
 
 	@BeforeSuite
 	public void beforeSuite() {
-
-		testHelper = new PHPTravelsTestHelper();
-		// Initialize Test Data
-		// Set Configs for test results etc
+		super.beforeSuite();
+		homePage = PHPTravelsHomePage.initialize(driver);
 	}
 
-	@Test
+	@Test(description = "Checks the Title of the Home Page", priority = 0, alwaysRun = true)
 	public void test_home_page_title() {
-		assertEquals(testHelper.getWebDriver().getTitle(), "PHPTRAVELS | Travel Technology Partner");
+		homePage.navigate();
+		assertEquals(driver.getTitle(), "PHPTRAVELS | Travel Technology Partner");
 	}
 
-	@AfterTest
-	public void afterTest() {
-		testHelper.quitBrowser();
-	}
-
-	@AfterSuite
-	public void afterSuite() {
-		// Kill Data Initializations
+	@AfterMethod
+	public void afterMethod() {
+		driver.quit();
 	}
 
 }
