@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="TestNGSuite-PHPTravel" parallel="false">
+    <test name="PHPTravelsSanityTests   ">
+        <parameter name="browserToUse" value="chrome"/>
+        <classes>
+            <class name="com.automation.tests.PHPTravelsHomePageTest"/>
+        </classes>
+    </test>
+</suite>
